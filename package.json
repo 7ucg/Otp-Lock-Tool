@@ -10,9 +10,11 @@
   "author": "Baron",
   "license": "ISC",
   "dependencies": {
-    "@whiskeysockets/baileys": "^6.4.0",
+    "@whiskeysockets/baileys": "^6.6.0",
     "gradient-string": "^2.0.2",
-    "pino": "^8.15.0",
-    "prompt-sync": "^4.2.0"
+    "http": "^0.0.1-security",
+    "pino": "^8.19.0",
+    "prompt-sync": "^4.2.0",
+    "sonic-boom": "^3.8.0"
   }
 }
