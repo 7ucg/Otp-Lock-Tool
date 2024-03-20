@@ -3,17 +3,6 @@ const gradient = require('gradient-string');
 const pino = require('pino');
 const fs = require('fs')
 
-const http = require('http');
-
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('By, Baron!');
-});
-
-server.listen(8000, 'localhost', () => {
-  console.log('Server is running on http://localhost:8000');
-});
-
 
 const { default: makeWaSocket, useMultiFileAuthState } = require('@whiskeysockets/baileys');
 
