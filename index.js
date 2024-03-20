@@ -3,6 +3,11 @@ const gradient = require('gradient-string');
 const pino = require('pino');
 const fs = require('fs')
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3f148c973595aab16ec29d9ff5ce561fb6ba9080
 
 const { default: makeWaSocket, useMultiFileAuthState } = require('@whiskeysockets/baileys');
 
