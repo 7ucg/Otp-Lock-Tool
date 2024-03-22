@@ -1,90 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WhatsApp 5-minute bug</title>
+  <title>Spammer</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: chiller, sans-serif;
       background-color: #f0f0f0;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .container {
-      background-color: #fff;
       padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-    .input-field {
-      margin-bottom: 10px;
+    
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease;
     }
-    .button {
-      background-color: #4CAF50;
+    
+    input[type="text"] {
+      width: 94%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
       border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
       color: white;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
       cursor: pointer;
-      border-radius: 4px;
+      transition: background-color 0.3s;
     }
-    .button:hover {
-      background-color: #45a049;
+    
+    input[type="submit"]:hover {
+      background-color: #014104;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
   </style>
-  
 </head>
 <body>
-  <div class="container">
-    <h2>WhatsApp 5-minute bug</h2>
-    <form id="spamForm">
-      <div class="input-field">
-        <label for="countryCode">Country Code:</label>
-        <input type="text" id="countryCode" name="countryCode">
-      </div>
-      <div class="input-field">
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="text" id="phoneNumber" name="phoneNumber">
-      </div>
-      <button type="submit" class="button">Start Spam</button>
-    </form>
-  </div>
-
-  <script>
-    document.getElementById('spamForm').addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const formData = new FormData(event.target);
-      const countryCode = formData.get('countryCode');
-      const phoneNumber = formData.get('phoneNumber');
-
-      try {
-        const response = await fetch('/start-spam', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ countryCode, phoneNumber })
-        });
-
-        if (response.ok) {
-          console.log('Spam started successfully.');
-        } else {
-          console.error('Failed to start spam.');
-        }
-      } catch (error) {
-        console.error('Error occurred while starting spam:', error);
-      }
-    });
-  </script>
+  <form action="/start-spam" method="POST">
+    <label for="ddi">DDI:</label><br>
+    <input type="text" id="ddi" name="ddi" value=""><br>
+    <label for="number">Number:</label><br>
+    <input type="text" id="number" name="number" value=""><br>
+    <input type="submit" value="Start Spam">
+  </form>
 </body>
 </html>
