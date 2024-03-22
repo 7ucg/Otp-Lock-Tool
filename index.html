@@ -41,21 +41,50 @@
       background-color: #45a049;
     }
   </style>
+  
 </head>
 <body>
   <div class="container">
     <h2>WhatsApp 5-minute bug</h2>
-    <div class="input-field">
-      <label for="country-code">Country Code:</label>
-      <input type="text" id="country-code">
-    </div>
-    <div class="input-field">
-      <label for="number">Number Without Country Code:</label>
-      <input type="text" id="number">
-    </div>
-    <button onclick="startSpam()" class="button">Start Spam</button>
+    <form id="spamForm">
+      <div class="input-field">
+        <label for="countryCode">Country Code:</label>
+        <input type="text" id="countryCode" name="countryCode">
+      </div>
+      <div class="input-field">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber">
+      </div>
+      <button type="submit" class="button">Start Spam</button>
+    </form>
   </div>
 
-  <script src="script.js"></script> <!-- Hier wird die JavaScript-Datei eingebunden -->
+  <script>
+    document.getElementById('spamForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+      const countryCode = formData.get('countryCode');
+      const phoneNumber = formData.get('phoneNumber');
+
+      try {
+        const response = await fetch('/start-spam', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ countryCode, phoneNumber })
+        });
+
+        if (response.ok) {
+          console.log('Spam started successfully.');
+        } else {
+          console.error('Failed to start spam.');
+        }
+      } catch (error) {
+        console.error('Error occurred while starting spam:', error);
+      }
+    });
+  </script>
 </body>
 </html>
